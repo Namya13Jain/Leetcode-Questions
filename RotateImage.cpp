@@ -5,12 +5,20 @@
 
 class Solution {
 public:
-    bool searchMatrix(vector<vector<int>>& matrix, int target) {
-        int m = matrix.size();
-        int n=matrix[0].size();
-        int i=0; 
-        int j=n-1;
+    void rotate(vector<vector<int>>& matrix) {
+        int n=matrix.size();
 
-        
+        //transpose of matrix
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                if(i<j)
+                swap(matrix[i][j],matrix[j][i]);
+            }
+        }
+        //swapping the columns
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n/2;j++)
+            swap(matrix[i][j],matrix[i][n-j-1]);
+        }
     }
 };
